@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sprout Alarm Clock — Wake Up With Purpose. An alarm clock app that turns your mornings into meaningful impact. 50% of subscription revenue goes toward planting trees." />
+  <meta name="description"
+    content="Sprout Alarm Clock — Wake Up With Purpose. An alarm clock app that turns your mornings into meaningful impact. 50% of subscription revenue goes toward planting trees." />
   <title>Sprout Alarm Clock — Wake Up With Purpose</title>
   <style>
     /* ===== RESET & BASE ===== */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
     :root {
-      --green-deep:    #1B5E20;
-      --green-mid:     #2E7D32;
-      --green-light:   #4CAF50;
-      --green-pale:    #E8F5E9;
-      --green-accent:  #A5D6A7;
-      --text-primary:  #1a1a1a;
-      --text-secondary:#4a4a4a;
-      --text-muted:    #767676;
-      --surface:       #ffffff;
-      --surface-alt:   #f9f9f7;
-      --border:        #e8e8e4;
-      --shadow-sm:     0 2px 8px rgba(0,0,0,0.06);
-      --shadow-md:     0 6px 24px rgba(0,0,0,0.09);
-      --shadow-lg:     0 16px 48px rgba(0,0,0,0.12);
-      --radius-sm:     10px;
-      --radius-md:     18px;
-      --radius-lg:     28px;
-      --max-width:     900px;
+      --green-deep: #1B5E20;
+      --green-mid: #2E7D32;
+      --green-light: #4CAF50;
+      --green-pale: #E8F5E9;
+      --green-accent: #A5D6A7;
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-muted: #767676;
+      --surface: #ffffff;
+      --surface-alt: #f9f9f7;
+      --border: #e8e8e4;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.09);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --max-width: 900px;
     }
 
     html {
@@ -48,20 +52,39 @@
     }
 
     /* ===== TYPOGRAPHY ===== */
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       line-height: 1.2;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
-    h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); }
-    h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
-    h3 { font-size: 1.1rem; font-weight: 600; }
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+    }
 
-    p { color: var(--text-secondary); }
+    h2 {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+    }
 
-    a { color: var(--green-mid); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+    }
+
+    a {
+      color: var(--green-mid);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     /* ===== LAYOUT HELPERS ===== */
     .container {
@@ -105,7 +128,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.88);
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
@@ -181,7 +204,7 @@
       right: -120px;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(76,175,80,0.10) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(76, 175, 80, 0.10) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -205,7 +228,9 @@
       margin-bottom: 28px;
     }
 
-    .hero-badge span { font-size: 1rem; }
+    .hero-badge span {
+      font-size: 1rem;
+    }
 
     .hero h1 {
       color: var(--text-primary);
@@ -264,7 +289,9 @@
       color: #fff;
     }
 
-    .btn-appstore:active { transform: translateY(0); }
+    .btn-appstore:active {
+      transform: translateY(0);
+    }
 
     .btn-appstore-icon {
       font-size: 1.3rem;
@@ -406,7 +433,7 @@
     }
 
     .mission-card .section-label {
-      background: rgba(255,255,255,0.18);
+      background: rgba(255, 255, 255, 0.18);
       color: #fff;
     }
 
@@ -425,20 +452,20 @@
     }
 
     .mission-card p {
-      color: rgba(255,255,255,0.85);
+      color: rgba(255, 255, 255, 0.85);
       font-size: 1.05rem;
       max-width: 560px;
       line-height: 1.75;
     }
 
-    .mission-card p + p {
+    .mission-card p+p {
       margin-top: 14px;
     }
 
     .mission-disclaimer {
       margin-top: 24px;
       font-size: 0.82rem !important;
-      color: rgba(255,255,255,0.55) !important;
+      color: rgba(255, 255, 255, 0.55) !important;
       font-style: italic;
     }
 
@@ -463,9 +490,12 @@
       letter-spacing: 0.06em;
     }
 
-    .legal-box h3:first-of-type { margin-top: 0; }
+    .legal-box h3:first-of-type {
+      margin-top: 0;
+    }
 
-    .legal-box p, .legal-box li {
+    .legal-box p,
+    .legal-box li {
       font-size: 0.93rem;
       color: var(--text-secondary);
       line-height: 1.75;
@@ -476,7 +506,7 @@
       margin-top: 6px;
     }
 
-    .legal-box ul li + li {
+    .legal-box ul li+li {
       margin-top: 6px;
     }
 
@@ -494,7 +524,7 @@
     /* ===== FOOTER ===== */
     footer {
       background: var(--text-primary);
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       padding: 48px 24px;
       text-align: center;
     }
@@ -536,7 +566,7 @@
     }
 
     .footer-links a {
-      color: rgba(255,255,255,0.55);
+      color: rgba(255, 255, 255, 0.55);
       font-size: 0.875rem;
       transition: color 0.18s;
     }
@@ -548,25 +578,137 @@
 
     .footer-copy {
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.30);
+      color: rgba(255, 255, 255, 0.30);
+    }
+
+    /* ===== CONTACT FORM ===== */
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-sm);
+      max-width: 640px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 0.01em;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      width: 100%;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-mid);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+      background: var(--surface);
+    }
+
+    .form-group textarea {
+      min-height: 130px;
+    }
+
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 14px 32px;
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: opacity 0.18s, transform 0.15s, box-shadow 0.18s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-send:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-send:active {
+      transform: translateY(0);
+    }
+
+    .contact-note {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 680px) {
-      section { padding: 72px 0; }
-      .hero { padding: 80px 0 72px; }
-      .mission-card { padding: 44px 28px; }
-      .legal-box { padding: 32px 24px; }
-      .nav-logo { font-size: 0.9rem; }
-      .screenshots-placeholder-box { gap: 16px; }
-      .screenshot-frame { width: 160px; height: 290px; }
+      section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding: 80px 0 72px;
+      }
+
+      .mission-card {
+        padding: 44px 28px;
+      }
+
+      .legal-box {
+        padding: 32px 24px;
+      }
+
+      .contact-form {
+        padding: 32px 24px;
+      }
+
+      .nav-logo {
+        font-size: 0.9rem;
+      }
+
+      .screenshots-placeholder-box {
+        gap: 16px;
+      }
+
+      .screenshot-frame {
+        width: 160px;
+        height: 290px;
+      }
     }
 
     @media (max-width: 480px) {
-      .nav-links { display: none; }
+      .nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- ===== NAV ===== -->
@@ -581,6 +723,7 @@
         <li><a href="#mission">Mission</a></li>
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="#terms">Terms</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
   </nav>
@@ -668,27 +811,32 @@
         <div class="feature-card">
           <div class="feature-icon">🌳</div>
           <h3>Tree Counter</h3>
-          <p>Watch your impact grow. Your Tree Counter tracks the cumulative contribution your subscription makes toward reforestation efforts, one morning at a time.</p>
+          <p>Watch your impact grow. Your Tree Counter tracks the cumulative contribution your subscription makes toward
+            reforestation efforts, one morning at a time.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎨</div>
           <h3>Custom Themes</h3>
-          <p>Make Sprout yours. Choose from a curated collection of serene, nature-inspired themes that set the tone for a calm and focused start to your day.</p>
+          <p>Make Sprout yours. Choose from a curated collection of serene, nature-inspired themes that set the tone for
+            a calm and focused start to your day.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🎵</div>
           <h3>Premium Sounds</h3>
-          <p>Ditch the jarring buzzer. Wake up to a library of premium alarm tones — from birdsong to gentle chimes — designed to ease you into the day.</p>
+          <p>Ditch the jarring buzzer. Wake up to a library of premium alarm tones — from birdsong to gentle chimes —
+            designed to ease you into the day.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">📳</div>
           <h3>Shake to Dismiss</h3>
-          <p>No more fumbling for your phone half-asleep. A quick shake dismisses your alarm, getting you moving instantly and naturally.</p>
+          <p>No more fumbling for your phone half-asleep. A quick shake dismisses your alarm, getting you moving
+            instantly and naturally.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">🧠</div>
           <h3>Wake-Up Challenges</h3>
-          <p>Beat the snooze habit for good. Complete a quick mental challenge — math, memory, or trivia — to prove you're truly awake before the alarm silences.</p>
+          <p>Beat the snooze habit for good. Complete a quick mental challenge — math, memory, or trivia — to prove
+            you're truly awake before the alarm silences.</p>
         </div>
       </div>
     </div>
@@ -730,35 +878,50 @@
         <span class="legal-updated">Last updated: March 2026</span>
 
         <h3>Overview</h3>
-        <p>Sprout Alarm Clock ("Sprout," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy describes how we handle information in connection with your use of the Sprout Alarm Clock iOS application.</p>
+        <p>Sprout Alarm Clock ("Sprout," "we," "us," or "our") is committed to protecting your privacy. This Privacy
+          Policy describes how we handle information in connection with your use of the Sprout Alarm Clock iOS
+          application.</p>
 
         <h3>Information We May Collect</h3>
-        <p>We may collect limited, non-identifying information to improve application performance and stability, including:</p>
+        <p>We may collect limited, non-identifying information to improve application performance and stability,
+          including:</p>
         <ul>
-          <li><strong>Analytics data:</strong> Aggregated, anonymized usage data such as feature interactions, session lengths, and general engagement patterns. This data does not identify you personally.</li>
-          <li><strong>Crash reports:</strong> Diagnostic information generated automatically when the app encounters an error. This helps us identify and fix bugs. Crash reports may include device model, iOS version, and a stack trace.</li>
+          <li><strong>Analytics data:</strong> Aggregated, anonymized usage data such as feature interactions, session
+            lengths, and general engagement patterns. This data does not identify you personally.</li>
+          <li><strong>Crash reports:</strong> Diagnostic information generated automatically when the app encounters an
+            error. This helps us identify and fix bugs. Crash reports may include device model, iOS version, and a stack
+            trace.</li>
         </ul>
 
         <h3>Subscription &amp; Payments</h3>
-        <p>All in-app purchases and subscriptions are processed entirely by Apple through the App Store. Sprout does not collect, store, or have access to your payment information. Please refer to Apple's Privacy Policy for details on how payment data is handled.</p>
+        <p>All in-app purchases and subscriptions are processed entirely by Apple through the App Store. Sprout does not
+          collect, store, or have access to your payment information. Please refer to Apple's Privacy Policy for details
+          on how payment data is handled.</p>
 
         <h3>No Sale of Personal Data</h3>
-        <p>We do not sell, rent, trade, or otherwise transfer your personal information to third parties for their own commercial purposes. Period.</p>
+        <p>We do not sell, rent, trade, or otherwise transfer your personal information to third parties for their own
+          commercial purposes. Period.</p>
 
         <h3>Third-Party Services</h3>
-        <p>Sprout may use third-party analytics or crash-reporting services (such as Apple's own tools) to help us understand app performance. These services operate under their own privacy policies and are selected for their commitment to data minimization.</p>
+        <p>Sprout may use third-party analytics or crash-reporting services (such as Apple's own tools) to help us
+          understand app performance. These services operate under their own privacy policies and are selected for their
+          commitment to data minimization.</p>
 
         <h3>Data Retention</h3>
-        <p>Anonymized analytics and crash data are retained only as long as necessary to fulfill the purposes described above, after which it is deleted or de-identified.</p>
+        <p>Anonymized analytics and crash data are retained only as long as necessary to fulfill the purposes described
+          above, after which it is deleted or de-identified.</p>
 
         <h3>Children's Privacy</h3>
-        <p>Sprout Alarm Clock is not directed at children under the age of 13. We do not knowingly collect personal information from children.</p>
+        <p>Sprout Alarm Clock is not directed at children under the age of 13. We do not knowingly collect personal
+          information from children.</p>
 
         <h3>Changes to This Policy</h3>
-        <p>We may update this Privacy Policy from time to time. Material changes will be communicated through the app or by updating the date above. Continued use of the app constitutes acceptance of any revised policy.</p>
+        <p>We may update this Privacy Policy from time to time. Material changes will be communicated through the app or
+          by updating the date above. Continued use of the app constitutes acceptance of any revised policy.</p>
 
         <h3>Contact</h3>
-        <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:hello@sproutalarm.com">hello@sproutalarm.com</a>.</p>
+        <p>If you have questions or concerns about this Privacy Policy, please contact us at <a
+            href="mailto:hello@sproutalarm.com">hello@sproutalarm.com</a>.</p>
       </div>
     </div>
   </section>
@@ -774,39 +937,88 @@
         <span class="legal-updated">Last updated: March 2026</span>
 
         <h3>Acceptance of Terms</h3>
-        <p>By downloading, installing, or using Sprout Alarm Clock, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the application.</p>
+        <p>By downloading, installing, or using Sprout Alarm Clock, you agree to be bound by these Terms of Service. If
+          you do not agree to these terms, do not use the application.</p>
 
         <h3>App Provided As-Is</h3>
-        <p>Sprout Alarm Clock is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. We do not warrant that the app will be uninterrupted, error-free, or free of harmful components. Your use of the app is at your sole risk.</p>
+        <p>Sprout Alarm Clock is provided on an "as is" and "as available" basis without warranties of any kind, either
+          express or implied. We do not warrant that the app will be uninterrupted, error-free, or free of harmful
+          components. Your use of the app is at your sole risk.</p>
 
         <h3>Alarm Reliability</h3>
-        <p>While we work hard to provide a reliable alarm experience, Sprout Alarm Clock cannot guarantee that alarms will sound under all circumstances, including but not limited to: device malfunction, software conflicts, operating system restrictions, low battery, silent mode, or other factors outside our control. <strong>We are not responsible for missed alarms or any consequences arising from them.</strong> Please do not rely solely on Sprout for time-critical situations.</p>
+        <p>While we work hard to provide a reliable alarm experience, Sprout Alarm Clock cannot guarantee that alarms
+          will sound under all circumstances, including but not limited to: device malfunction, software conflicts,
+          operating system restrictions, low battery, silent mode, or other factors outside our control. <strong>We are
+            not responsible for missed alarms or any consequences arising from them.</strong> Please do not rely solely
+          on Sprout for time-critical situations.</p>
 
         <h3>Subscriptions &amp; Auto-Renewal</h3>
         <p>Sprout Pro is offered as an auto-renewing subscription through the Apple App Store. By subscribing:</p>
         <ul>
-          <li>Your subscription will automatically renew at the end of each billing period unless cancelled at least 24 hours before the current period ends.</li>
+          <li>Your subscription will automatically renew at the end of each billing period unless cancelled at least 24
+            hours before the current period ends.</li>
           <li>Payment will be charged to your Apple ID account at confirmation of purchase.</li>
           <li>You can manage and cancel your subscription at any time in your device's App Store settings.</li>
         </ul>
 
         <h3>Refund Policy</h3>
-        <p>All refund requests are handled exclusively by Apple in accordance with their App Store refund policies. Sprout does not process refunds independently. To request a refund, please visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.</p>
+        <p>All refund requests are handled exclusively by Apple in accordance with their App Store refund policies.
+          Sprout does not process refunds independently. To request a refund, please visit <a
+            href="https://reportaproblem.apple.com" target="_blank"
+            rel="noopener noreferrer">reportaproblem.apple.com</a>.</p>
 
         <h3>Right to Modify or Discontinue</h3>
-        <p>We reserve the right to modify, suspend, or discontinue Sprout Alarm Clock or any part of it — including features, pricing, or availability — at any time and without prior notice. We are not liable to you or any third party for any such modification, suspension, or discontinuation.</p>
+        <p>We reserve the right to modify, suspend, or discontinue Sprout Alarm Clock or any part of it — including
+          features, pricing, or availability — at any time and without prior notice. We are not liable to you or any
+          third party for any such modification, suspension, or discontinuation.</p>
 
         <h3>Intellectual Property</h3>
-        <p>All content, design, code, and branding within Sprout Alarm Clock are the property of Sprout and are protected by applicable intellectual property laws. You may not reproduce, copy, or distribute any portion of the app without express written permission.</p>
+        <p>All content, design, code, and branding within Sprout Alarm Clock are the property of Sprout and are
+          protected by applicable intellectual property laws. You may not reproduce, copy, or distribute any portion of
+          the app without express written permission.</p>
 
         <h3>Limitation of Liability</h3>
-        <p>To the fullest extent permitted by law, Sprout shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the app or inability to use the app.</p>
+        <p>To the fullest extent permitted by law, Sprout shall not be liable for any indirect, incidental, special,
+          consequential, or punitive damages arising from your use of the app or inability to use the app.</p>
 
         <h3>Governing Law</h3>
-        <p>These Terms are governed by the laws of the applicable jurisdiction, without regard to conflict of law principles.</p>
+        <p>These Terms are governed by the laws of the applicable jurisdiction, without regard to conflict of law
+          principles.</p>
 
         <h3>Contact</h3>
-        <p>For questions about these Terms, please reach out at <a href="mailto:hello@sproutalarm.com">hello@sproutalarm.com</a>.</p>
+        <p>For questions about these Terms, please reach out at <a
+            href="mailto:hello@sproutalarm.com">hello@sproutalarm.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Get in Touch</span>
+        <h2>Contact Us</h2>
+        <p>Have a question, found a bug, or just want to say hello? Fill out the form and your default mail app will
+          open with everything pre-filled.</p>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" placeholder="Jane Smith" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="contact-subject">Subject</label>
+          <input type="text" id="contact-subject" placeholder="e.g. Bug report, Feature request…" />
+        </div>
+        <div class="form-group">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" placeholder="Tell us what's on your mind…"></textarea>
+        </div>
+        <button class="btn-send" onclick="sendMail()">
+          <span>✉</span> Send Message
+        </button>
+        <p class="contact-note">Opens your default mail app. No data is collected by this form.</p>
       </div>
     </div>
   </section>
@@ -823,11 +1035,39 @@
         <li><a href="#mission">Mission</a></li>
         <li><a href="#privacy">Privacy Policy</a></li>
         <li><a href="#terms">Terms of Service</a></li>
-        <li><a href="mailto:hello@sproutalarm.com">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <p class="footer-copy">&copy; 2026 Sprout Alarm Clock. All rights reserved.</p>
     </div>
   </footer>
 
+  <script>
+    function sendMail() {
+      var name = document.getElementById('contact-name').value.trim();
+      var subject = document.getElementById('contact-subject').value.trim();
+      var message = document.getElementById('contact-message').value.trim();
+
+      if (!subject && !message) {
+        alert('Please fill in at least a subject or message before sending.');
+        return;
+      }
+
+      var body = message;
+      if (name) body = 'Hi Sprout Team,\n\n' + message + '\n\n— ' + name;
+
+      var mailto = 'mailto:sproutalarm@gmail.com'
+        + '?subject=' + encodeURIComponent(subject || 'Message from Sprout website')
+        + '&body=' + encodeURIComponent(body);
+
+      window.location.href = mailto;
+    }
+
+    // Allow pressing Enter inside inputs to submit
+    document.getElementById('contact-subject').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); document.getElementById('contact-message').focus(); }
+    });
+  </script>
+
 </body>
+
 </html>
