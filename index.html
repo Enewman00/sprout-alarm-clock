@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sprout Alarm Clock — Wake Up With Purpose. An alarm clock app that turns your mornings into meaningful impact. 50% of subscription revenue goes toward planting trees." />
+  <title>Sprout Alarm Clock — Wake Up With Purpose</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green-deep:    #1B5E20;
+      --green-mid:     #2E7D32;
+      --green-light:   #4CAF50;
+      --green-pale:    #E8F5E9;
+      --green-accent:  #A5D6A7;
+      --text-primary:  #1a1a1a;
+      --text-secondary:#4a4a4a;
+      --text-muted:    #767676;
+      --surface:       #ffffff;
+      --surface-alt:   #f9f9f7;
+      --border:        #e8e8e4;
+      --shadow-sm:     0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md:     0 6px 24px rgba(0,0,0,0.09);
+      --shadow-lg:     0 16px 48px rgba(0,0,0,0.12);
+      --radius-sm:     10px;
+      --radius-md:     18px;
+      --radius-lg:     28px;
+      --max-width:     900px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--surface);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3 {
+      line-height: 1.2;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: clamp(2.4rem, 6vw, 3.8rem); }
+    h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+    h3 { font-size: 1.1rem; font-weight: 600; }
+
+    p { color: var(--text-secondary); }
+
+    a { color: var(--green-mid); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ===== LAYOUT HELPERS ===== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 96px 0;
+    }
+
+    section:nth-child(even) {
+      background: var(--surface-alt);
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      background: var(--green-pale);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .section-intro {
+      max-width: 580px;
+      margin-bottom: 60px;
+    }
+
+    .section-intro h2 {
+      margin-bottom: 14px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      gap: 24px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-icon {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: 100px;
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .nav-links a:hover {
+      background: var(--green-pale);
+      color: var(--green-deep);
+      text-decoration: none;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 120px 0 100px;
+      background: linear-gradient(160deg, #f2faf2 0%, #ffffff 60%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -120px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(76,175,80,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green-pale);
+      border: 1px solid var(--green-accent);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      margin-bottom: 28px;
+    }
+
+    .hero-badge span { font-size: 1rem; }
+
+    .hero h1 {
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--green-mid);
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      max-width: 520px;
+      color: var(--text-secondary);
+      margin-bottom: 44px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text-primary);
+      color: #fff;
+      padding: 14px 26px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+
+    .btn-appstore:hover {
+      background: #2a2a2a;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .btn-appstore:active { transform: translateY(0); }
+
+    .btn-appstore-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .btn-appstore-text small {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      opacity: 0.75;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .btn-appstore-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .hero-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== SCREENSHOTS ===== */
+    .screenshots-section {
+      background: var(--surface);
+    }
+
+    .screenshots-placeholder-box {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .screenshot-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .screenshot-frame {
+      width: 200px;
+      height: 360px;
+      background: linear-gradient(145deg, #f0f4f0, #e8ede8);
+      border-radius: 28px;
+      border: 2px dashed var(--green-accent);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .screenshot-frame-icon {
+      font-size: 2rem;
+      opacity: 0.5;
+    }
+
+    .screenshot-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ===== FEATURES ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--green-pale);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* ===== MISSION ===== */
+    .mission-card {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+      border-radius: var(--radius-lg);
+      padding: 64px 56px;
+      color: #fff;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-card::after {
+      content: '🌳';
+      position: absolute;
+      right: 40px;
+      bottom: 30px;
+      font-size: 6rem;
+      opacity: 0.12;
+      line-height: 1;
+    }
+
+    .mission-card .section-label {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+
+    .mission-card h2 {
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .mission-stat {
+      display: inline-block;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin: 8px 0 16px;
+    }
+
+    .mission-card p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .mission-card p + p {
+      margin-top: 14px;
+    }
+
+    .mission-disclaimer {
+      margin-top: 24px;
+      font-size: 0.82rem !important;
+      color: rgba(255,255,255,0.55) !important;
+      font-style: italic;
+    }
+
+    /* ===== LEGAL SECTIONS ===== */
+    .legal-section {
+      scroll-margin-top: 72px;
+    }
+
+    .legal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 44px 40px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .legal-box h3 {
+      color: var(--green-deep);
+      margin: 32px 0 10px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .legal-box h3:first-of-type { margin-top: 0; }
+
+    .legal-box p, .legal-box li {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .legal-box ul {
+      padding-left: 20px;
+      margin-top: 6px;
+    }
+
+    .legal-box ul li + li {
+      margin-top: 6px;
+    }
+
+    .legal-updated {
+      display: inline-block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      background: var(--surface-alt);
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--text-primary);
+      color: rgba(255,255,255,0.55);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .footer-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--green-mid), var(--green-deep));
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.875rem;
+      transition: color 0.18s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.30);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      section { padding: 72px 0; }
+      .hero { padding: 80px 0 72px; }
+      .mission-card { padding: 44px 28px; }
+      .legal-box { padding: 32px 24px; }
+      .nav-logo { font-size: 0.9rem; }
+      .screenshots-placeholder-box { gap: 16px; }
+      .screenshot-frame { width: 160px; height: 290px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">🌱</div>
+        Sprout Alarm
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#terms">Terms</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge"><span>🌿</span> Available on the App Store</div>
+      <h1>Sprout<br><em>Alarm Clock</em></h1>
+      <p class="hero-tagline">Wake Up With Purpose.</p>
+      <p class="hero-desc">
+        Every morning is an opportunity to make an impact. Sprout pairs smart alarm features
+        with a simple promise — your subscription helps fund tree-planting efforts around the world.
+        Rise better. Leave the world a little greener.
+      </p>
+      <div class="hero-actions">
+        <!-- App Store Button — replace href with real App Store URL when available -->
+        <a href="#" class="btn-appstore" aria-label="Download on the App Store">
+          <span class="btn-appstore-icon"></span>
+          <span class="btn-appstore-text">
+            <small>Download on the</small>
+            <strong>App Store</strong>
+          </span>
+        </a>
+        <span class="hero-note">iOS 16+ &nbsp;·&nbsp; Free to download</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREENSHOTS ===== -->
+  <section class="screenshots-section" id="screenshots">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Screenshots</span>
+        <h2>See It in Action</h2>
+        <p>A calm, focused experience built for your morning routine.</p>
+      </div>
+
+      <div class="screenshots-placeholder-box">
+
+        <!-- Screenshot 1 -->
+        <!-- <img src="screenshots/screenshot-1.png" alt="Sprout Alarm Clock – Home Screen" width="200" style="border-radius:28px; box-shadow:0 12px 40px rgba(0,0,0,0.13);"> -->
+        <div class="screenshot-slot">
+          <div class="screenshot-frame">
+            <span class="screenshot-frame-icon">📱</span>
+            <span>Screenshot 1<br>Home Screen</span>
+          </div>
+          <span class="screenshot-label">Home Screen</span>
+        </div>
+
+        <!-- Screenshot 2 -->
+        <!-- <img src="screenshots/screenshot-2.png" alt="Sprout Alarm Clock – Tree Counter" width="200" style="border-radius:28px; box-shadow:0 12px 40px rgba(0,0,0,0.13);"> -->
+        <div class="screenshot-slot">
+          <div class="screenshot-frame">
+            <span class="screenshot-frame-icon">📱</span>
+            <span>Screenshot 2<br>Tree Counter</span>
+          </div>
+          <span class="screenshot-label">Tree Counter</span>
+        </div>
+
+        <!-- Screenshot 3 -->
+        <!-- <img src="screenshots/screenshot-3.png" alt="Sprout Alarm Clock – Wake-Up Challenge" width="200" style="border-radius:28px; box-shadow:0 12px 40px rgba(0,0,0,0.13);"> -->
+        <div class="screenshot-slot">
+          <div class="screenshot-frame">
+            <span class="screenshot-frame-icon">📱</span>
+            <span>Screenshot 3<br>Wake-Up Challenge</span>
+          </div>
+          <span class="screenshot-label">Wake-Up Challenge</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Pro Features</span>
+        <h2>Everything You Need to Own Your Mornings</h2>
+        <p>Sprout Pro gives you a powerful, personalized alarm experience designed to wake you up — and keep you up.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌳</div>
+          <h3>Tree Counter</h3>
+          <p>Watch your impact grow. Your Tree Counter tracks the cumulative contribution your subscription makes toward reforestation efforts, one morning at a time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Custom Themes</h3>
+          <p>Make Sprout yours. Choose from a curated collection of serene, nature-inspired themes that set the tone for a calm and focused start to your day.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h3>Premium Sounds</h3>
+          <p>Ditch the jarring buzzer. Wake up to a library of premium alarm tones — from birdsong to gentle chimes — designed to ease you into the day.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📳</div>
+          <h3>Shake to Dismiss</h3>
+          <p>No more fumbling for your phone half-asleep. A quick shake dismisses your alarm, getting you moving instantly and naturally.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <h3>Wake-Up Challenges</h3>
+          <p>Beat the snooze habit for good. Complete a quick mental challenge — math, memory, or trivia — to prove you're truly awake before the alarm silences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION ===== -->
+  <section id="mission" style="background:var(--surface-alt);">
+    <div class="container">
+      <div class="mission-card">
+        <span class="section-label">Our Mission</span>
+        <h2>Mornings That Matter</h2>
+        <div class="mission-stat">50%</div>
+        <p>
+          Half of all subscription revenue generated by Sprout Alarm Clock is allocated toward
+          tree-planting initiatives. This is embedded in how we run this business — not an afterthought,
+          not a campaign.
+        </p>
+        <p>
+          We believe a small daily habit — waking up — can connect to something much larger.
+          Every active Sprout Pro subscriber is part of a growing community whose collective
+          presence helps fund reforestation efforts around the globe.
+        </p>
+        <p class="mission-disclaimer">
+          Revenue allocation is managed by Sprout's operating budget. Subscribers are not making
+          a direct charitable donation. Tree-planting contributions may vary based on operational costs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRIVACY POLICY ===== -->
+  <section id="privacy" class="legal-section">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Legal</span>
+        <h2>Privacy Policy</h2>
+      </div>
+      <div class="legal-box">
+        <span class="legal-updated">Last updated: March 2026</span>
+
+        <h3>Overview</h3>
+        <p>Sprout Alarm Clock ("Sprout," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy describes how we handle information in connection with your use of the Sprout Alarm Clock iOS application.</p>
+
+        <h3>Information We May Collect</h3>
+        <p>We may collect limited, non-identifying information to improve application performance and stability, including:</p>
+        <ul>
+          <li><strong>Analytics data:</strong> Aggregated, anonymized usage data such as feature interactions, session lengths, and general engagement patterns. This data does not identify you personally.</li>
+          <li><strong>Crash reports:</strong> Diagnostic information generated automatically when the app encounters an error. This helps us identify and fix bugs. Crash reports may include device model, iOS version, and a stack trace.</li>
+        </ul>
+
+        <h3>Subscription &amp; Payments</h3>
+        <p>All in-app purchases and subscriptions are processed entirely by Apple through the App Store. Sprout does not collect, store, or have access to your payment information. Please refer to Apple's Privacy Policy for details on how payment data is handled.</p>
+
+        <h3>No Sale of Personal Data</h3>
+        <p>We do not sell, rent, trade, or otherwise transfer your personal information to third parties for their own commercial purposes. Period.</p>
+
+        <h3>Third-Party Services</h3>
+        <p>Sprout may use third-party analytics or crash-reporting services (such as Apple's own tools) to help us understand app performance. These services operate under their own privacy policies and are selected for their commitment to data minimization.</p>
+
+        <h3>Data Retention</h3>
+        <p>Anonymized analytics and crash data are retained only as long as necessary to fulfill the purposes described above, after which it is deleted or de-identified.</p>
+
+        <h3>Children's Privacy</h3>
+        <p>Sprout Alarm Clock is not directed at children under the age of 13. We do not knowingly collect personal information from children.</p>
+
+        <h3>Changes to This Policy</h3>
+        <p>We may update this Privacy Policy from time to time. Material changes will be communicated through the app or by updating the date above. Continued use of the app constitutes acceptance of any revised policy.</p>
+
+        <h3>Contact</h3>
+        <p>If you have questions or concerns about this Privacy Policy, please contact us at <a href="mailto:hello@sproutalarm.com">hello@sproutalarm.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TERMS OF SERVICE ===== -->
+  <section id="terms" class="legal-section" style="background:var(--surface-alt);">
+    <div class="container">
+      <div class="section-intro">
+        <span class="section-label">Legal</span>
+        <h2>Terms of Service</h2>
+      </div>
+      <div class="legal-box">
+        <span class="legal-updated">Last updated: March 2026</span>
+
+        <h3>Acceptance of Terms</h3>
+        <p>By downloading, installing, or using Sprout Alarm Clock, you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the application.</p>
+
+        <h3>App Provided As-Is</h3>
+        <p>Sprout Alarm Clock is provided on an "as is" and "as available" basis without warranties of any kind, either express or implied. We do not warrant that the app will be uninterrupted, error-free, or free of harmful components. Your use of the app is at your sole risk.</p>
+
+        <h3>Alarm Reliability</h3>
+        <p>While we work hard to provide a reliable alarm experience, Sprout Alarm Clock cannot guarantee that alarms will sound under all circumstances, including but not limited to: device malfunction, software conflicts, operating system restrictions, low battery, silent mode, or other factors outside our control. <strong>We are not responsible for missed alarms or any consequences arising from them.</strong> Please do not rely solely on Sprout for time-critical situations.</p>
+
+        <h3>Subscriptions &amp; Auto-Renewal</h3>
+        <p>Sprout Pro is offered as an auto-renewing subscription through the Apple App Store. By subscribing:</p>
+        <ul>
+          <li>Your subscription will automatically renew at the end of each billing period unless cancelled at least 24 hours before the current period ends.</li>
+          <li>Payment will be charged to your Apple ID account at confirmation of purchase.</li>
+          <li>You can manage and cancel your subscription at any time in your device's App Store settings.</li>
+        </ul>
+
+        <h3>Refund Policy</h3>
+        <p>All refund requests are handled exclusively by Apple in accordance with their App Store refund policies. Sprout does not process refunds independently. To request a refund, please visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener noreferrer">reportaproblem.apple.com</a>.</p>
+
+        <h3>Right to Modify or Discontinue</h3>
+        <p>We reserve the right to modify, suspend, or discontinue Sprout Alarm Clock or any part of it — including features, pricing, or availability — at any time and without prior notice. We are not liable to you or any third party for any such modification, suspension, or discontinuation.</p>
+
+        <h3>Intellectual Property</h3>
+        <p>All content, design, code, and branding within Sprout Alarm Clock are the property of Sprout and are protected by applicable intellectual property laws. You may not reproduce, copy, or distribute any portion of the app without express written permission.</p>
+
+        <h3>Limitation of Liability</h3>
+        <p>To the fullest extent permitted by law, Sprout shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the app or inability to use the app.</p>
+
+        <h3>Governing Law</h3>
+        <p>These Terms are governed by the laws of the applicable jurisdiction, without regard to conflict of law principles.</p>
+
+        <h3>Contact</h3>
+        <p>For questions about these Terms, please reach out at <a href="mailto:hello@sproutalarm.com">hello@sproutalarm.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="footer-logo-icon">🌱</div>
+        Sprout Alarm Clock
+      </div>
+      <ul class="footer-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+        <li><a href="mailto:hello@sproutalarm.com">Contact</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 Sprout Alarm Clock. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
