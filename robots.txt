@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enewman00.github.io/sprout-alarm-clock/sitemap.xml
